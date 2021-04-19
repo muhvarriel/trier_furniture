@@ -61,28 +61,28 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (kIsWeb) {
-      return Container(
-        color: bgColor,
-        child: Stack(
-          children: [
-            HomePageIsWeb(),
-            HeaderNav(),
-          ],
-        ),
-      );
-    } else {
-      return Scaffold(
-        body: buildPageView(),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          currentIndex: bottomSelectedIndex,
-          onTap: (index) {
-            bottomTapped(index);
-          },
-          items: buildBottomNavBarItems(),
-        ),
-      );
-    }
+    return ResponsiveBuilder(
+        builder: (context, sizingInformation) => Scaffold(
+            body: sizingInformation.isMobile
+                ? Scaffold(
+                    body: buildPageView(),
+                    bottomNavigationBar: BottomNavigationBar(
+                      backgroundColor: Colors.white,
+                      currentIndex: bottomSelectedIndex,
+                      onTap: (index) {
+                        bottomTapped(index);
+                      },
+                      items: buildBottomNavBarItems(),
+                    ),
+                  )
+                : Container(
+                    color: bgColor,
+                    child: Stack(
+                      children: [
+                        HomePage(),
+                        HeaderNav(),
+                      ],
+                    ),
+                  )));
   }
 }

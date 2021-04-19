@@ -8,8 +8,12 @@ class HeroPart extends StatelessWidget {
       children: [
         SizedBox(
           width: 180,
-          child: Image.network(
-              "https://drive.google.com/uc?export=view&id=1dEjgm8lhVK82E4rw-h49m6BNdf68oS-L"),
+          child: CachedNetworkImage(
+            imageUrl:
+                "https://drive.google.com/uc?export=view&id=1dEjgm8lhVK82E4rw-h49m6BNdf68oS-L",
+            placeholder: (context, url) => CircularProgressIndicator(),
+            errorWidget: (context, url, error) => Icon(Icons.error),
+          ),
         ),
         SizedBox(
           height: 60,

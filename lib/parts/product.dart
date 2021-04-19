@@ -22,8 +22,12 @@ class Product extends StatelessWidget {
                   width: double.infinity,
                   child: ClipRRect(
                     borderRadius: new BorderRadius.all(Radius.circular(25)),
-                    child: new Image.network(
-                      "https://drive.google.com/uc?export=view&id=1bqSx7iMXf0iFlau6bopaefYcxAOPDyV8",
+                    child: new CachedNetworkImage(
+                      imageUrl:
+                          "https://drive.google.com/uc?export=view&id=1bqSx7iMXf0iFlau6bopaefYcxAOPDyV8",
+                      placeholder: (context, url) =>
+                          CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
                       fit: BoxFit.fitWidth,
                     ),
                   ),

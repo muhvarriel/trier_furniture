@@ -22,8 +22,12 @@ class HeaderNav extends StatelessWidget {
         children: [
           SizedBox(
             height: 24,
-            child: new Image.network(
-                "https://drive.google.com/uc?export=view&id=1dEjgm8lhVK82E4rw-h49m6BNdf68oS-L"),
+            child: new CachedNetworkImage(
+              imageUrl:
+                  "https://drive.google.com/uc?export=view&id=1dEjgm8lhVK82E4rw-h49m6BNdf68oS-L",
+              placeholder: (context, url) => CircularProgressIndicator(),
+              errorWidget: (context, url, error) => Icon(Icons.error),
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
