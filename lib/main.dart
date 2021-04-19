@@ -16,11 +16,15 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         primaryColor: primaryColor,
         accentColor: secondaryColor,
+        pageTransitionsTheme: PageTransitionsTheme(builders: {
+          TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        }),
 
         // Define the default font family.
-        fontFamily: 'Poppins',
+        fontFamily: 'Montserrat',
       ),
-      home: Homepage(),
+      home: MainPage(),
     );
   }
 }

@@ -22,7 +22,7 @@ class HeaderNav extends StatelessWidget {
         children: [
           SizedBox(
             height: 24,
-            child: Image.network(
+            child: new Image.network(
                 "https://drive.google.com/uc?export=view&id=1dEjgm8lhVK82E4rw-h49m6BNdf68oS-L"),
           ),
           Row(
